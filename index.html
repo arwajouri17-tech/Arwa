@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover China with Aura Tour — culture, cuisine and unforgettable journeys.">
+  <title>Aura Tour | Discover China</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#8f101b;--deep:#520811;--gold:#d8ad62;--cream:#fff8ed;--ink:#291b18;--muted:#786b61}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .topline{height:5px;background:linear-gradient(90deg,var(--deep),var(--gold),var(--red))}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,248,237,.95);backdrop-filter:blur(12px);border-bottom:1px solid #eadcc8}
+    .nav{max-width:1180px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--deep)}
+    .brand img{width:66px;height:48px;object-fit:contain;border-radius:5px}
+    .brand span{font-family:"Playfair Display",serif;font-size:23px;letter-spacing:.3px}
+    nav{display:flex;align-items:center;gap:25px;font-size:13px;font-weight:700;color:#5b4037}
+    nav a:hover{color:var(--red)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:white;padding:12px 20px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.3px;border:1px solid var(--red);transition:.2s}
+    .nav-cta:hover,.btn:hover{background:var(--deep);transform:translateY(-2px)}
+    .hero{min-height:650px;display:grid;grid-template-columns:1fr 1fr;background:var(--deep);color:white;overflow:hidden}
+    .hero-copy{padding:95px max(7vw,35px) 85px max(7vw,35px);display:flex;flex-direction:column;justify-content:center;position:relative}
+    .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:700}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.08}
+    h1{font-size:clamp(48px,6vw,78px);margin:22px 0}
+    h1 em{color:var(--gold);font-weight:500}
+    .hero-copy p{max-width:470px;color:#f2dfd2;font-size:16px;margin-bottom:30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn.gold{background:var(--gold);border-color:var(--gold);color:#35150e}
+    .btn.outline{background:transparent;border-color:#d8ad62;color:white}
+    .hero-photo{min-height:500px;background:linear-gradient(90deg,rgba(82,8,17,.25),transparent),url("https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1400&q=85") center/cover;position:relative}
+    .photo-note{position:absolute;bottom:28px;right:28px;background:rgba(255,248,237,.94);color:var(--deep);padding:16px 20px;font-family:"Playfair Display",serif;font-size:19px}
+    .section{max-width:1180px;margin:auto;padding:88px 24px}
+    .section-head{text-align:center;max-width:650px;margin:0 auto 42px}
+    .section-head .eyebrow{color:var(--red)}
+    h2{font-size:clamp(34px,4vw,48px);margin:12px 0;color:var(--deep)}
+    .section-head p{color:var(--muted)}
+    .destinations{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .destination{position:relative;min-height:360px;overflow:hidden;color:white;background:#6d3927}
+    .destination img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .5s}
+    .destination:hover img{transform:scale(1.06)}
+    .destination:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(25,9,8,.82),transparent 70%)}
+    .destination div{position:absolute;z-index:1;bottom:25px;left:25px;right:20px}
+    .destination small{color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:10px}
+    .destination h3{font-size:29px;margin:5px 0}
+    .destination p{font-size:13px;color:#f8e9df}
+    .why{background:#f2e6d4}
+    .why-inner{max-width:1180px;margin:auto;padding:78px 24px;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .why-image{height:480px;background:url("https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1100&q=85") center/cover}
+    .why-copy h2{margin:14px 0 20px}
+    .why-copy>p{color:var(--muted);margin-bottom:25px}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .feature{border-top:1px solid #d6c4aa;padding-top:13px}
+    .feature b{display:block;color:var(--deep);font-family:"Playfair Display",serif;font-size:19px}
+    .feature span{font-size:12px;color:var(--muted)}
+    .food-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .food{background:white;box-shadow:0 8px 25px #5c30100d}
+    .food img{width:100%;height:190px;object-fit:cover;display:block}
+    .food div{padding:16px}
+    .food h3{font-size:20px;color:var(--deep)}
+    .food p{font-size:12px;color:var(--muted);margin-top:5px}
+    .culture{background:var(--red);color:white}
+    .culture-inner{max-width:1180px;margin:auto;padding:78px 24px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .culture h2{color:white}.culture p{color:#f2dcd0;margin:18px 0 25px}
+    .culture img{width:100%;height:360px;object-fit:cover}
+    .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .tip{padding:25px;border:1px solid #e7d8c3;background:#fffdf8}
+    .tip .number{font-family:"Playfair Display",serif;font-size:32px;color:var(--gold)}
+    .tip h3{font-size:21px;color:var(--deep);margin:8px 0}
+    .tip p{font-size:13px;color:var(--muted)}
+    .detail-modal{position:fixed;inset:0;z-index:60;background:rgba(25,8,10,.78);display:none;align-items:center;justify-content:center;padding:18px}
+    .detail-modal.open{display:flex}.modal-panel{width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--cream);color:var(--ink);position:relative;box-shadow:0 20px 70px #0006}
+    .modal-panel img{width:100%;height:260px;object-fit:cover;display:block}.modal-body{padding:25px}
+    .modal-body h2{font-size:34px;margin:8px 0 12px}.modal-body p{color:var(--muted);margin:8px 0 18px}
+    .modal-close{position:absolute;right:12px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:white;color:var(--deep);font-size:24px;cursor:pointer}
+    .clickable{cursor:pointer}.clickable:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .booking-form{display:grid;gap:12px;text-align:left;margin-top:18px}.booking-form label{font-size:13px;font-weight:700;color:var(--deep)}
+    .booking-form input,.booking-form select{width:100%;padding:12px;border:1px solid #d8c7ae;background:white;font:inherit;border-radius:2px}
+    .form-message{padding:12px;background:#efe4d2;color:var(--deep);font-size:13px;display:none}
+    .contact{background:var(--deep);color:white;text-align:center;padding:80px 24px}
+    .contact h2{color:white}.contact p{color:#ead4c9;max-width:550px;margin:0 auto 25px}
+    footer{background:#2e080d;color:#d7bda9;padding:24px;text-align:center;font-size:12px}
+    footer strong{color:var(--gold)}
+    .lang-ar{font-family:"Cairo",sans-serif;direction:rtl}
+    .lang-toggle{border:1px solid var(--gold);background:transparent;color:var(--deep);padding:8px 12px;cursor:pointer;font-weight:700}
+    [data-lang="ar"] .en{display:none!important}
+    [data-lang="en"] .ar{display:none!important}
+    [data-lang="ar"] body{font-family:"Cairo",sans-serif}
+    @media(max-width:800px){nav{display:none}.hero{grid-template-columns:1fr}.hero-copy{padding:75px 28px}.hero-photo{min-height:380px}.destinations{grid-template-columns:1fr 1fr}.why-inner,.culture-inner{grid-template-columns:1fr}.why-image{height:340px}.food-grid{grid-template-columns:1fr 1fr}.tips{grid-template-columns:1fr}}
+    @media(max-width:480px){.destinations{grid-template-columns:1fr}.destination{min-height:320px}.food-grid{grid-template-columns:1fr 1fr}.food img{height:135px}.brand span{font-size:19px}.brand img{width:52px;height:40px}.section{padding:65px 18px}}
+  </style>
+</head>
+<body data-lang="en">
+<div class="topline"></div>
+<header>
+  <div class="nav">
+    <a class="brand" href="#home"><img src="assets/aura-tour-logo.jpeg" alt="Aura Tour logo"><span>Aura Tour</span></a>
+    <nav>
+      <a href="#destinations" class="en">Destinations</a><a href="#destinations" class="ar">الوجهات</a>
+      <a href="#food" class="en">Chinese Food</a><a href="#food" class="ar">المأكولات</a>
+      <a href="#culture" class="en">Culture</a><a href="#culture" class="ar">الثقافة</a>
+      <a href="#contact" class="en">Contact</a><a href="#contact" class="ar">اتصل بنا</a>
+    </nav>
+    <button class="lang-toggle" id="languageButton" type="button">العربية</button>
+  </div>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow en">Aura Tour · Travel Agency</span><span class="eyebrow ar">أورا تور · وكالة سفر وسياحة</span>
+      <h1 class="en">Discover <em>China</em><br>A world of wonder.</h1>
+      <h1 class="ar">اكتشفوا <em>الصين</em><br>عالم من الجمال.</h1>
+      <p class="en">From the Great Wall to glowing city skylines, discover a destination where ancient traditions meet an exciting modern world.</p>
+      <p class="ar">من سور الصين العظيم إلى المدن العصرية المضيئة، اكتشفوا بلداً يجمع بين التقاليد العريقة والحياة الحديثة.</p>
+      <div class="hero-actions"><a href="#destinations" class="btn gold en">Explore China</a><a href="#destinations" class="btn gold ar">اكتشف الصين</a><a href="#contact" class="btn outline en">Plan your trip</a><a href="#contact" class="btn outline ar">خطط لرحلتك</a></div>
+    </div>
+    <div class="hero-photo"><div class="photo-note en">A journey of culture, flavour & adventure</div><div class="photo-note ar">رحلة من الثقافة والنكهات والمغامرة</div></div>
+  </section>
+
+  <section class="section" id="destinations">
+    <div class="section-head"><span class="eyebrow en">Unforgettable places</span><span class="eyebrow ar">أماكن لا تُنسى</span><h2 class="en">Top Destinations</h2><h2 class="ar">أشهر الوجهات السياحية</h2><p class="en">Explore China's iconic landmarks, historic treasures and breathtaking landscapes.</p><p class="ar">اكتشفوا أشهر المعالم التاريخية والمناظر الطبيعية الخلابة في الصين.</p></div>
+    <div class="destinations">
+      <article class="destination clickable" tabindex="0" role="button" data-detail="beijing"><img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=85" alt="Great Wall of China"><div><small>Beijing</small><h3>Great Wall</h3><p class="en">Walk along one of the world's most remarkable landmarks.</p><p class="ar">اكتشفوا سور الصين العظيم، أحد أشهر معالم العالم.</p></div></article>
+      <article class="destination clickable" tabindex="0" role="button" data-detail="shanghai"><img src="https://images.unsplash.com/photo-1537531383496-f4749b8032cf?auto=format&fit=crop&w=900&q=85" alt="Shanghai skyline"><div><small>Shanghai</small><h3>Modern City</h3><p class="en">Experience dazzling skylines, shopping and city life.</p><p class="ar">استمتعوا بناطحات السحاب والتسوق والحياة العصرية.</p></div></article>
+      <article class="destination clickable" tabindex="0" role="button" data-detail="xian"><img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=900&q=85" alt="Chinese temple"><div><small>Xi'an</small><h3>Ancient Heritage</h3><p class="en">Discover temples, history and the famous Terracotta Army.</p><p class="ar">اكتشفوا المعابد والتاريخ وجيش التيراكوتا الشهير.</p></div></article>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="why-inner"><div class="why-image" role="img" aria-label="Traditional Chinese architecture"></div><div class="why-copy"><span class="eyebrow en">Why visit China?</span><span class="eyebrow ar">لماذا تزورون الصين؟</span><h2 class="en">Tradition meets tomorrow.</h2><h2 class="ar">حيث تلتقي الأصالة بالحداثة.</h2><p class="en">China offers an unforgettable mix of rich heritage, beautiful nature, vibrant cities and world-famous cuisine.</p><p class="ar">تقدم الصين مزيجاً رائعاً من التراث الغني والطبيعة الجميلة والمدن النابضة بالحياة والمأكولات المشهورة.</p><div class="features"><div class="feature"><b class="en">Rich Culture</b><b class="ar">ثقافة غنية</b><span>History, art and traditions</span></div><div class="feature"><b class="en">Amazing Nature</b><b class="ar">طبيعة ساحرة</b><span>Mountains, rivers and gardens</span></div><div class="feature"><b class="en">Modern Cities</b><b class="ar">مدن عصرية</b><span>Energy, shopping and design</span></div><div class="feature"><b class="en">Delicious Food</b><b class="ar">مأكولات لذيذة</b><span>Flavours for every traveller</span></div></div></div></div>
+  </section>
+
+  <section class="section" id="food">
+    <div class="section-head"><span class="eyebrow en">A taste of China</span><span class="eyebrow ar">تذوقوا نكهات الصين</span><h2 class="en">A Food Lover's Paradise</h2><h2 class="ar">جنة لعشاق الطعام</h2><p class="en">Discover some of the dishes that make Chinese cuisine loved around the world.</p><p class="ar">تذوقوا أشهر الأطباق التي جعلت المطبخ الصيني محبوباً حول العالم.</p></div>
+    <div class="food-grid">
+      <article class="food clickable" tabindex="0" role="button" data-detail="dumplings"><img src="https://images.unsplash.com/photo-1563240619-44ec0047592c?auto=format&fit=crop&w=600&q=85" alt="Dumplings"><div><h3>Dumplings</h3><p class="ar">عجائن محشوة ولذيذة.</p><p class="en">Delicate parcels filled with tasty ingredients.</p></div></article>
+      <article class="food clickable" tabindex="0" role="button" data-detail="noodles"><img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=85" alt="Noodles"><div><h3>Noodles</h3><p class="ar">معكرونة صينية بصلصات متنوعة.</p><p class="en">Noodles served with delicious sauces.</p></div></article>
+      <article class="food clickable" tabindex="0" role="button" data-detail="stirfry"><img src="https://images.unsplash.com/photo-1512003867696-6d5ce6835040?auto=format&fit=crop&w=600&q=85" alt="Chinese stir fry"><div><h3>Stir-fry</h3><p class="ar">خضروات ومكونات مطهوة بسرعة.</p><p class="en">Fresh ingredients cooked over high heat.</p></div></article>
+      <article class="food clickable" tabindex="0" role="button" data-detail="hotpot"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=85" alt="Asian soup"><div><h3>Hot Pot</h3><p class="ar">حساء ساخن يُحضّر على المائدة.</p><p class="en">A warm shared meal cooked at the table.</p></div></article>
+    </div>
+  </section>
+
+  <section class="culture" id="culture"><div class="culture-inner"><div><span class="eyebrow">More than travel · أكثر من مجرد سفر</span><h2 class="en">Feel the spirit of China.</h2><h2 class="ar">عيشوا روح الثقافة الصينية.</h2><p class="en">Enjoy traditional festivals, graceful calligraphy, tea ceremonies, lanterns and the beauty of Chinese art.</p><p class="ar">استمتعوا بالمهرجانات التقليدية وفن الخط وطقوس الشاي والفوانيس وجمال الفن الصيني.</p><a href="#contact" class="btn gold en">Start your adventure</a><a href="#contact" class="btn gold ar">ابدأوا مغامرتكم</a></div><img src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?auto=format&fit=crop&w=1100&q=85" alt="Chinese lanterns and traditional culture"></div></section>
+
+  <section class="section"><div class="section-head"><span class="eyebrow en">Travel smart</span><span class="eyebrow ar">نصائح للمسافر</span><h2 class="en">Before You Go</h2><h2 class="ar">قبل السفر</h2><p class="en">A few simple tips to help you prepare for your journey.</p><p class="ar">بعض النصائح البسيطة لتحضير رحلتكم.</p></div><div class="tips"><article class="tip"><div class="number">01</div><h3 class="en">Best time to visit</h3><h3 class="ar">أفضل وقت للزيارة</h3><p class="en">Spring and autumn are often pleasant seasons for exploring.</p><p class="ar">غالباً ما يكون الربيع والخريف مناسبين لاكتشاف الصين.</p></article><article class="tip"><div class="number">02</div><h3 class="en">Plan ahead</h3><h3 class="ar">خططوا مسبقاً</h3><p class="en">Check visa requirements, travel documents and local transport.</p><p class="ar">تحققوا من شروط التأشيرة ووثائق السفر ووسائل النقل.</p></article><article class="tip"><div class="number">03</div><h3 class="en">Learn a few words</h3><h3 class="ar">تعلموا بعض الكلمات</h3><p class="en">A simple “Nǐ hǎo” (hello) can make a lovely first impression.</p><p class="ar">كلمة «ني هاو» تعني مرحباً باللغة الصينية.</p></article></div></section>
+
+  <section class="contact" id="contact"><span class="eyebrow">Aura Tour · Travel Agency</span><h2 class="en">Your China story starts here.</h2><h2 class="ar">رحلتكم إلى الصين تبدأ من هنا.</h2><p class="en">Contact Aura Tour to plan a journey filled with discovery, culture and unforgettable memories.</p><p class="ar">تواصلوا مع أورا تور لتنظيم رحلة مليئة بالاكتشاف والثقافة والذكريات الجميلة.</p><button class="btn gold" id="openBooking" type="button">Book / احجز رحلتك</button></section>
+</main>
+<div class="detail-modal" id="detailModal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="closeModal" aria-label="Close">&times;</button>
+    <img id="modalImage" src="" alt="">
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+<footer>© <span id="year"></span> <strong>Aura Tour</strong> · Travel Agency · <span class="en">Discover more. Travel better.</span><span class="ar">اكتشف أكثر، وسافر بأفضل طريقة.</span></footer>
+<script>
+const languageButton=document.getElementById('languageButton');
+languageButton.addEventListener('click',()=>{
+ const arabic=document.body.dataset.lang==='en';
+ document.body.dataset.lang=arabic?'ar':'en';
+ languageButton.textContent=arabic?'English':'العربية';
+ document.documentElement.lang=arabic?'ar':'en';
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const details={
+ beijing:{title:'Beijing | بكين',image:'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1100&q=85',en:'China’s historic capital is home to the Great Wall, the Forbidden City and beautiful traditional streets. Visit the Great Wall, explore the imperial palace and enjoy a traditional tea house.',ar:'بكين هي عاصمة الصين التاريخية، وتضم سور الصين العظيم والمدينة المحرمة والأحياء التقليدية الجميلة. زوروا السور واستكشفوا القصر الإمبراطوري واستمتعوا بجلسة شاي صينية.'},
+ shanghai:{title:'Shanghai | شنغهاي',image:'https://images.unsplash.com/photo-1537531383496-f4749b8032cf?auto=format&fit=crop&w=1100&q=85',en:'A lively modern city famous for its skyline, shopping streets and waterfront views. Visit the Bund, enjoy the city lights and discover local markets.',ar:'مدينة عصرية نابضة بالحياة تشتهر بناطحات السحاب وشوارع التسوق والإطلالات البحرية. زوروا البوند واستمتعوا بأضواء المدينة واكتشفوا الأسواق المحلية.'},
+ xian:{title:'Xi’an | شيآن',image:'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1100&q=85',en:'Discover one of China’s oldest cities, known for its ancient city wall and the world-famous Terracotta Army. A wonderful stop for history lovers.',ar:'اكتشفوا واحدة من أقدم المدن الصينية، المشهورة بسورها التاريخي وجيش التيراكوتا الشهير عالمياً. إنها وجهة رائعة لمحبي التاريخ.'},
+ dumplings:{title:'Dumplings | دامبلينغز',image:'https://images.unsplash.com/photo-1563240619-44ec0047592c?auto=format&fit=crop&w=1100&q=85',en:'Soft dough parcels filled with meat or vegetables. They can be steamed, boiled or pan-fried and are a favourite in China.',ar:'عجائن طرية محشوة باللحم أو الخضروات. يمكن طهيها بالبخار أو السلق أو القلي، وهي من الأطباق المحبوبة في الصين.'},
+ noodles:{title:'Chinese Noodles | النودلز الصينية',image:'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1100&q=85',en:'A popular dish served in many regional styles, with broths, vegetables, meat or savoury sauces.',ar:'طبق مشهور يُحضّر بطرق مختلفة حسب المنطقة، ويُقدّم مع المرق أو الخضروات أو اللحم أو الصلصات.'},
+ stirfry:{title:'Stir-fry | القلي السريع',image:'https://images.unsplash.com/photo-1512003867696-6d5ce6835040?auto=format&fit=crop&w=1100&q=85',en:'Fresh vegetables and other ingredients quickly cooked in a hot wok to keep their colour and flavour.',ar:'خضروات ومكونات طازجة تُطهى بسرعة في مقلاة صينية ساخنة للحفاظ على لونها ونكهتها.'},
+ hotpot:{title:'Hot Pot | الهوت بوت',image:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1100&q=85',en:'A social dining experience where diners cook ingredients in a simmering pot of broth at the table.',ar:'تجربة طعام جماعية، حيث يطبخ الضيوف المكونات بأنفسهم في قدر من المرق الساخن على المائدة.'}
+};
+const modal=document.getElementById('detailModal'), modalImage=document.getElementById('modalImage'), modalBody=document.getElementById('modalBody');
+function openModal(key){
+ if(key==='booking'){
+  modalImage.style.display='none';
+  modalBody.innerHTML=`<span class="eyebrow">AURA TOUR · TRAVEL REQUEST</span><h2 id="modalTitle">Plan your China trip | خطط لرحلتك</h2>
+  <p class="en">Fill in your travel details. This is a demo form; connect a booking service or backend before using it to receive real requests.</p>
+  <p class="ar">أدخلوا معلومات رحلتكم. هذا نموذج تجريبي؛ يجب ربطه بخدمة حجز أو نظام خلفي لاستقبال الطلبات الحقيقية.</p>
+  <form class="booking-form" id="bookingForm">
+   <label>Name / الاسم<input required name="name" placeholder="Your full name"></label>
+   <label>Email / البريد الإلكتروني<input required type="email" name="email" placeholder="name@example.com"></label>
+   <label>Preferred city / المدينة<select name="city"><option>Beijing</option><option>Shanghai</option><option>Xi'an</option><option>More than one city</option></select></label>
+   <label>Travel date / تاريخ السفر<input required type="date" name="date"></label>
+   <label>Number of travellers / عدد المسافرين<input required type="number" min="1" max="30" name="people" value="2"></label>
+   <button class="btn" type="submit">Send request / إرسال الطلب</button>
+   <div class="form-message" id="formMessage">Thank you! This demo has shown your request confirmation. Please contact Aura Tour to confirm. / شكراً لكم! هذا نموذج تجريبي فقط. يرجى التواصل مع الوكالة لتأكيد الحجز.</div>
+  </form>`;
+  modalBody.querySelector('#bookingForm').addEventListener('submit',e=>{e.preventDefault();modalBody.querySelector('#formMessage').style.display='block';});
+ }else{
+  const d=details[key];if(!d)return;
+  modalImage.style.display='block';modalImage.src=d.image;modalImage.alt=d.title;
+  modalBody.innerHTML=`<span class="eyebrow">DISCOVER WITH AURA TOUR</span><h2 id="modalTitle">${d.title}</h2><p class="en">${d.en}</p><p class="ar">${d.ar}</p><button class="btn" id="modalBook">Book this experience / احجز هذه التجربة</button>`;
+  modalBody.querySelector('#modalBook').addEventListener('click',()=>openModal('booking'));
+ }
+ modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+}
+function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.querySelectorAll('[data-detail]').forEach(card=>{
+ card.addEventListener('click',()=>openModal(card.dataset.detail));
+ card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(card.dataset.detail);}});
+});
+document.getElementById('openBooking').addEventListener('click',()=>openModal('booking'));
+document.getElementById('closeModal').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
